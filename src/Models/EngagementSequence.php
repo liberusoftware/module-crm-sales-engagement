@@ -4,19 +4,16 @@ declare(strict_types=1);
 
 namespace Liberu\CRM\SalesEngagement\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Liberu\Foundation\Organizations\Models\Team;
+use App\Traits\IsTenantModel;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $team_id
+ * @property string $status
  */
 final class EngagementSequence extends Model
 {
-    public function team(): BelongsTo
-    {
-        return $this->belongsTo(Team::class);
-    }
+    use IsTenantModel;
 
     protected $table = 'crm_engagement_sequences';
 
